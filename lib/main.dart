@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:math';
 import './components/transaction_form.dart';
 import 'components/transactions_list.dart';
@@ -104,6 +105,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     final appBar = AppBar(
       title: Text('Despesas Pessoais', style: TextStyle(color: Colors.white)),
       actions: [
