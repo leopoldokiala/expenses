@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:math';
 import './components/transaction_form.dart';
 import 'components/transactions_list.dart';
@@ -103,13 +102,28 @@ class _ExpensesState extends State<Expenses> {
     );
   }
 
+  bool _showChart = false;
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    final mediaQuery = MediaQuery.of(context);
+    bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text('Despesas Pessoais', style: TextStyle(color: Colors.white)),
       actions: [
+        if (isLandscape)
+          IconButton(
+            onPressed: () {
+              setState(() {
+                _showChart = !_showChart;
+              });
+            },
+            icon: Icon(
+              _showChart ? Icons.list : Icons.show_chart,
+              color: Colors.white,
+            ),
+          ),
         IconButton(
           onPressed: _openTransactionFormModal,
           icon: Icon(Icons.add, color: Colors.white),
@@ -117,23 +131,41 @@ class _ExpensesState extends State<Expenses> {
       ],
     );
     final availabelHeight =
-        MediaQuery.of(context).size.height -
+        mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
+
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: .stretch,
           children: [
-            SizedBox(
-              height: availabelHeight * 0.25,
-              child: Chart(_recentTransaction),
-            ),
-            SizedBox(
-              height: availabelHeight * 0.75,
-              child: TransactionsList(_transactions, _removeTransations),
-            ),
+            /* if (isLandscape)
+              Row(
+                mainAxisAlignment: .center,
+                children: [
+                  Text('Exibir Gráfico', textAlign: TextAlign.center),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    },
+                  ),
+                ],
+              ),*/
+            if (_showChart || !isLandscape)
+              SizedBox(
+                height: availabelHeight * (isLandscape ? 0.8 : 0.25),
+                child: Chart(_recentTransaction),
+              ),
+            if (!_showChart || !isLandscape)
+              SizedBox(
+                height: availabelHeight * (isLandscape ? 1 : 0.25),
+                child: TransactionsList(_transactions, _removeTransations),
+              ),
           ],
         ),
       ),
