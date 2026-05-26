@@ -58,6 +58,12 @@ class _ExpensesState extends State<Expenses> {
     ),
     Transaction(id: '2', title: 'Almoço', value: 3000, date: DateTime.now()),
     Transaction(id: '3', title: 'Lanche', value: 2000, date: DateTime.now()),
+    Transaction(
+      id: '4',
+      title: 'Game',
+      value: 3500,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
   ];
 
   List<Transaction> get _recentTransaction {
@@ -98,22 +104,33 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Text('Despesas Pessoais', style: TextStyle(color: Colors.white)),
+      actions: [
+        IconButton(
+          onPressed: _openTransactionFormModal,
+          icon: Icon(Icons.add, color: Colors.white),
+        ),
+      ],
+    );
+    final availabelHeight =
+        MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Despesas Pessoais', style: TextStyle(color: Colors.white)),
-        actions: [
-          IconButton(
-            onPressed: _openTransactionFormModal,
-            icon: Icon(Icons.add, color: Colors.white),
-          ),
-        ],
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: .stretch,
           children: [
-            Chart(_recentTransaction),
-            TransactionsList(_transactions, _removeTransations),
+            SizedBox(
+              height: availabelHeight * 0.25,
+              child: Chart(_recentTransaction),
+            ),
+            SizedBox(
+              height: availabelHeight * 0.75,
+              child: TransactionsList(_transactions, _removeTransations),
+            ),
           ],
         ),
       ),
