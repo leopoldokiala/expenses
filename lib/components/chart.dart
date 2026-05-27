@@ -21,10 +21,6 @@ class Chart extends StatelessWidget {
           totalSum += recentTransaction[i].value;
         }
       }
-
-      debugPrint('Data:${DateFormat.E().format(weekDay)[0]}');
-      debugPrint('Trotal: $totalSum');
-
       return {'day': DateFormat.E().format(weekDay)[0], 'value': totalSum};
     }).reversed.toList();
   }
