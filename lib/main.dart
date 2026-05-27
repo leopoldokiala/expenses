@@ -124,10 +124,15 @@ class _ExpensesState extends State<Expenses> {
     final mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
+    final iconList = Platform.isIOS ? CupertinoIcons.refresh : Icons.list;
+    final iconChart = Platform.isIOS
+        ? CupertinoIcons.refresh
+        : Icons.show_chart;
+
     final actions = [
       if (isLandscape)
         _getIconButton(
-          icon: _showChart ? Icons.list : Icons.show_chart,
+          icon: _showChart ? iconList : iconChart,
 
           fn: () {
             setState(() {
@@ -152,38 +157,40 @@ class _ExpensesState extends State<Expenses> {
         appBar.preferredSize.height -
         mediaQuery.padding.top;
 
-    final bodyPage = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: .stretch,
-        children: [
-          /*  if (isLandscape)
-              Row(
-                mainAxisAlignment: .center,
-                children: [
-                  Text('Exibir Gráfico', textAlign: TextAlign.center),
-                  Switch.adaptive(
-                    activeTrackColor: Theme.of(context).colorScheme.primary,
-
-                    value: _showChart,
-                    onChanged: (value) {
-                      setState(() {
-                        _showChart = value;
-                      });
-                    },
-                  ),
-                ],
-              ),*/
-          if (_showChart || !isLandscape)
-            SizedBox(
-              height: availabelHeight * (isLandscape ? 0.8 : 0.25),
-              child: Chart(_recentTransaction),
-            ),
-          if (!_showChart || !isLandscape)
-            SizedBox(
-              height: availabelHeight * (isLandscape ? 1 : 0.25),
-              child: TransactionsList(_transactions, _removeTransations),
-            ),
-        ],
+    final bodyPage = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: .stretch,
+          children: [
+            /*  if (isLandscape)
+                Row(
+                  mainAxisAlignment: .center,
+                  children: [
+                    Text('Exibir Gráfico', textAlign: TextAlign.center),
+                    Switch.adaptive(
+                      activeTrackColor: Theme.of(context).colorScheme.primary,
+      
+                      value: _showChart,
+                      onChanged: (value) {
+                        setState(() {
+                          _showChart = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),*/
+            if (_showChart || !isLandscape)
+              SizedBox(
+                height: availabelHeight * (isLandscape ? 0.8 : 0.25),
+                child: Chart(_recentTransaction),
+              ),
+            if (!_showChart || !isLandscape)
+              SizedBox(
+                height: availabelHeight * (isLandscape ? 1 : 0.25),
+                child: TransactionsList(_transactions, _removeTransations),
+              ),
+          ],
+        ),
       ),
     );
 
