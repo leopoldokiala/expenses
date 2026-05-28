@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class AdaptativeButton extends StatelessWidget {
   final String label;
-  final Function(void) onPressed;
+  final VoidCallback onPressed;
   const AdaptativeButton({
     required this.label,
     required this.onPressed,
@@ -17,14 +17,14 @@ class AdaptativeButton extends StatelessWidget {
     return Platform.isIOS
         ? CupertinoButton(
             color: Colors.purple,
-            onPressed: () => onPressed,
+            onPressed: onPressed,
             child: Text(label),
           )
         : ElevatedButton(
             style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(Colors.purple),
             ),
-            onPressed: () => onPressed,
+            onPressed: onPressed,
             child: Text(label, style: TextStyle(fontSize: 16)),
           );
   }

@@ -186,7 +186,7 @@ class _ExpensesState extends State<Expenses> {
               ),
             if (!_showChart || !isLandscape)
               SizedBox(
-                height: availabelHeight * (isLandscape ? 1 : 0.25),
+                height: availabelHeight * (isLandscape ? 1 : 0.75),
                 child: TransactionsList(_transactions, _removeTransations),
               ),
           ],

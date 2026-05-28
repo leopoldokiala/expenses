@@ -38,7 +38,7 @@ class AdaptativeDatePicker extends StatelessWidget {
               initialDateTime: DateTime.now(),
               minimumDate: DateTime(2026),
               maximumDate: DateTime.now(),
-              onDateTimeChanged: (_) => onDateChanged,
+              onDateTimeChanged: onDateChanged,
             ),
           )
         : Row(

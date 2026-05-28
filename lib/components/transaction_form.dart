@@ -1,8 +1,7 @@
+import 'package:expenses/components/adaptative_button.dart';
 import 'package:expenses/components/adaptative_date_picker.dart';
+import 'package:expenses/components/adaptative_text_field.dart';
 import 'package:flutter/material.dart';
-import './adaptative_button.dart';
-import 'package:intl/intl.dart';
-import './adaptative_text_field.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -67,7 +66,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 children: [
                   AdaptativeButton(
                     label: 'Nova Transação',
-                    onPressed: (_) => _submitForm,
+                    onPressed: _submitForm,
                   ),
                 ],
               ),

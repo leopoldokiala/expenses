@@ -22,13 +22,13 @@ class AdaptativeTextField extends StatelessWidget {
         ? CupertinoTextField(
             controller: controller,
             keyboardType: keyboardType,
-            onSubmitted: (_) => onSubmitted,
+            onSubmitted: onSubmitted,
             placeholder: label,
           )
         : TextField(
             controller: controller,
             keyboardType: keyboardType,
-            onSubmitted: (_) => onSubmitted,
+            onSubmitted: onSubmitted,
             decoration: InputDecoration(label: Text(label)),
           );
   }
