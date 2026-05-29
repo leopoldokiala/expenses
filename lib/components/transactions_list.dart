@@ -22,7 +22,7 @@ class TransactionsList extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SizedBox(
                     height: constraints.maxHeight * 0.2,
                     child: Image.asset(
@@ -63,8 +63,12 @@ class TransactionsList extends StatelessWidget {
                   trailing: MediaQuery.of(context).size.width > 480
                       ? TextButton.icon(
                           onPressed: () => onRemove(tr.id),
-                          icon: Icon(Icons.delete, color: Colors.red, size: 32),
-                          label: Text(
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                            size: 32,
+                          ),
+                          label: const Text(
                             'Excluir',
                             style: TextStyle(color: Colors.red, fontSize: 18),
                           ),

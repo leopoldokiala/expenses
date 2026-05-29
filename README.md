@@ -2,7 +2,6 @@
 Aplicativo de controle de despesas pessoais desenvolvido em Flutter com interface adaptativa (Material Design no Android, Cupertino no iOS).
 
 # Funcionalidades
-<<<<<<< HEAD
 
 - Adicionar despesas - regista o título, valor e data de cada transação
 - Listar transações - exibe todas as despesas registadas com opção de eliminar
@@ -20,37 +19,12 @@ Aplicativo de controle de despesas pessoais desenvolvido em Flutter com interfac
 - Estado reativo - a UI atualiza-se automaticamente com "setState"
 
 # Tecnologias
->>>>>>> 21d5066bcb390f190009fca79bc185d32e04d884
 - Flutter e Dart
 - Pacotes: intl (formatação de datas/moeda), cupertino_icons
 - Fontes personalizadas: OpenSans e Quicksand
 - Estrutura: models/, components/, main.dart
 
-<<<<<<< HEAD
-# Estrutura do projeto
-
-lib/
- main.dart                          # Entry point, tema, estado global
-
- models/
- transaction.dart               # Modelo Transaction (id, title, value, date)
- 
- components/
- transaction_form.dart          # Formulário para nova transação
-
- transactions_list.dart         # Lista de transações com delete
-
- chart.dart                     # Gráfico semanal de despesas
-
- chart_bar.dart                 # Barra individual do gráfico
-
- adaptative_button.dart         # Botão adaptativo (Cupertino / Material)
-
- adaptative_text_field.dart     # Campo de texto adaptativo
- adaptative_date_picker.dart    # Seletor de data adaptativo
-
 # Como executar
-
 bash
 1- flutter pub get
 2- flutter run
@@ -76,7 +50,6 @@ flutter run
 <img width="791" height="652" alt="6" src="https://github.com/user-attachments/assets/ccea98d2-9cc0-4972-8c68-e8fcd4620aea" />
 <img width="496" height="851" alt="1" src="https://github.com/user-attachments/assets/31b90a4e-5aa3-4f68-a7bb-7adc277056cd" />
 
->>>>>>> 21d5066bcb390f190009fca79bc185d32e04d884
 
 # Aprendizados
 
@@ -88,9 +61,4 @@ Este projeto foi desenvolvido no curso *Aprenda Flutter e Desenvolva Apps Para A
 - Formulários, validação e controllers
 - DatePicker nativo (Material e Cupertino)
 - ListView, Card, e gestão de estado com "setState"
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 21d5066bcb390f190009fca79bc185d32e04d884
