@@ -53,23 +53,7 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   bool _showChart = false;
 
-  final List<Transaction> _transactions = [
-    Transaction(id: '0', title: 'Konekta', value: 2000, date: DateTime.now()),
-    Transaction(
-      id: '1',
-      title: 'Conta de luz',
-      value: 6000,
-      date: DateTime.now(),
-    ),
-    Transaction(id: '2', title: 'Almoço', value: 3000, date: DateTime.now()),
-    Transaction(id: '3', title: 'Lanche', value: 2000, date: DateTime.now()),
-    Transaction(
-      id: '4',
-      title: 'Game',
-      value: 3500,
-      date: DateTime.now().subtract(Duration(days: 4)),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransaction {
     return _transactions.where((tr) {
